@@ -41,7 +41,7 @@ export default {
           }
         } else {
           try {
-            await axios.get(`https://54f320c0-ba97-469d-a3d7-f3a62b7d2797.mock.pstmn.io/geo/1.0/direct?q=${this.city}`)
+            await axios.get(`${process.env.VUE_APP_WEATHER_URL}/geo/1.0/direct?q=${this.city}&appid=${process.env.VUE_APP_APP_ID}`)
             .then(result => {
               if (result.data.length == 1) {
                 this.$emit('select-city', {lon: result.data[0].lon, lat: result.data[0].lat, name: result.data[0].name})

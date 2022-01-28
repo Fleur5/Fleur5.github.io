@@ -1,50 +1,27 @@
 <template>
   <div class="weather-panel">
-    <h3> {{ convertTime(weatherData.dt)}} </h3>
-     <div>
-      <weather-data class="left-side"
-        :name="weatherData.weather[0].main"
-        :description="weatherData.weather[0].description"
-        :iconId="weatherData.weather[0].icon"/>
-      <temperature-data class="right-side"
-        :time="weatherData.dt"
-        :real="weatherData.temp"
-        :feelsLike="weatherData.feels_like"/>
-     </div>
-     <div>
-      <sun-data class="left-side"
-        :sunrise="weatherData.sunrise"
-        :sunset="weatherData.sunset"
-        :uv="weatherData.uvi"
-        :clouds="weatherData.clouds"/>
-      <wind-data class="right-side"
-        :speed="weatherData.wind_speed"
-        :gust="weatherData.wind_gust"
-        :degree="weatherData.wind_deg"/>
-     </div>
+    <weather-data class="left-side"
+      :name="weatherData.weather[0].main"
+      :description="weatherData.weather[0].description"
+      :iconId="weatherData.weather[0].icon"/>
+    <temperature-data class="right-side"
+      :time="weatherData.dt"
+      :real="weatherData.temp.day"
+      :feelsLike="weatherData.feels_like.day"/>
   </div>
 </template>
 
 <script>
-import SunData from './SunData.vue'
 import TemperatureData from './TemperatureData.vue'
 import WeatherData from './WeatherData.vue'
-import WindData from './WindData.vue'
 export default {
   name: 'WeatherDetails',
   components: {
-    WindData,
     WeatherData,
-    SunData,
     TemperatureData
   },
   props:{
     weatherData: null
-  },
-  methods: {
-      convertTime(unixTime) {
-          return new Date(unixTime).getDate()
-      }
   }
 }
 </script>
@@ -55,7 +32,8 @@ export default {
 .weather-panel {
   margin: auto;
   border-radius: 10px;
-  height: 200px;
+  clear: both;
+  height: 150px;
   border-style: outset;
   border-color: #304a36;
   background-image: linear-gradient(to bottom right, #97b89f, #536e5a);

@@ -1,9 +1,8 @@
 <template>
   <div>
      <h3>Temperature</h3>
-     <p> Speed: {{speed}} </p>
-     <p> Gust speed: {{gust}}</p>
-     <p> Direction: {{degree}}</p>
+     <p> Real: {{real}} </p>
+     <p> Feels like: {{feelsLike}}</p>
   </div>
 </template>
 

@@ -3,7 +3,9 @@
   <h1 v-if="cityName"> {{cityName}} </h1>
   <city-selector v-if="!cityName"
      @select-city="onSelectCity"/>
-  <weather-page v-if="cityName"/>
+  <weather-page v-if="cityName"
+    :lat="lat"
+    :lon="lon"/>
 </template>
 
 <script>
@@ -19,7 +21,7 @@ export default {
   data() {
     return {
       cityName: null,
-      long: null,
+      lon: null,
       lat: null
     };
   },
